@@ -5,67 +5,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML-JS</title>
-    <script>
-        var items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        var id = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-
-
-        function random_item() {
-            var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9] //all numbers to be randomized
-            ranNums = [],
-                i = nums.length,
-                j = 0;
-
-            while (i--) {
-                j = Math.floor(Math.random() * (i + 1));
-                ranNums.push(nums[j]);
-                nums.splice(j, 1);
-            }
-            for (let i = 1; i <= 9; i++) {
-                document.getElementById(id[i - 1]).innerHTML = ranNums[i - 1];
-            }
-
-
-        }
-
-        function sorting() {
-            items = items.sort();
-            for (let i = 1; i <= 9; i++) {
-                document.getElementById(id[i - 1]).innerHTML = items[i - 1];
-            }
-
-        }
-    </script>
     <link rel="stylesheet" href="ext.css">
-
+    <title>Assignment</title>
 </head>
 
 <body>
-    <header>
-        <h3>Shuffle and Sort</h3>
-        <h5>Desktop</h5>
-    </header>
-
     <div class="container">
-        <div class="flex-container">
-            <div class="flex-item" id="one">1</div>
-            <div class="flex-item" id="two">2</div>
-            <div class="flex-item" id="three">3</div>
-            <div class="flex-item" id="four">4</div>
-            <div class="flex-item" id="five">5 </div>
-            <div class="flex-item" id="six">6 </div>
-            <div class="flex-item" id="seven">7 </div>
-            <div class="flex-item" id="eight">8 </div>
-            <div class="flex-item" id="nine">9 </div>
-            <div class="btn-container" id="ten">
-                <button class="btn" type="button" onclick="random_item()">Shuffle</button><br><br>
-                <button class="btn" type="button" onclick="sorting()">sort </button>
+        <h2 class="heading">Shuffle and sort</h2>
+
+        <div class="row">
+            <div class="col-8">
+                <ul id="boxHolder">
+                </ul>
+            </div>
+            <div class="col-4">
+                <button class="btn" onclick="shuffleArray()">Shuffle</button>
+                <button class="btn" onclick="sortArray()">Sort</button>
             </div>
         </div>
-
-
     </div>
 </body>
+
+<script>
+    // creating an array of 1-9
+    let arr = Array.from(Array(9), (x, index) => index + 1);
+    renderDOM();
+
+    /* Function to handle sort button click from the user
+     */
+    function sortArray() {
+        document.getElementById("boxHolder").innerHTML = '';
+        arr.sort();
+        renderDOM();
+    }
+
+    /* Function to handle shuffle button click from the user
+     */
+    function shuffleArray() {
+        document.getElementById("boxHolder").innerHTML = '';
+        shuffle(arr);
+        renderDOM();
+    }
+
+    /* Function to render the list items
+     */
+    function renderDOM() {
+        arr.forEach(function(item) {
+            let li = document.createElement("li");
+            let text = document.createTextNode(item);
+            li.appendChild(text);
+            li.className = `c${item}`
+            document.getElementById("boxHolder").appendChild(li);
+
+        });
+    }
+
+    /* Function to shuffle array with random numbers
+     * (array) => array is received as the input
+     */
+    function shuffle(array) {
+        array.sort(() => Math.random() - 0.5);
+    }
+</script>
 
 </html>
