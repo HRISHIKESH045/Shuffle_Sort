@@ -10,9 +10,10 @@ A simple web-based game to shuffle and sort numbers.
 ## Features
 - Users can shuffle numbers randomly.
 - Users can sort numbers in ascending order.
+- Responsive design that works on desktop and mobile browsers
 
 ## How to Run
-Open `  https://hrishikesh045.github.io/Shuffle_Sort/  ` in any modern browser to start the game.
+![https://hrishikesh045.github.io/Shuffle_Sort/] Live view the Shuffle_Sort
 
 ## Future Enhancements
 - Improve UI design.
